@@ -27,8 +27,8 @@ namespace ContactModels
         [Display(Name = "Insert Email id")]
         [Required(ErrorMessage = "Email id  is Required")]
         [StringLength(ContactManagerCon.MAX_EMAIL_LENGTH)]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
-                            ErrorMessage = "Please enter a valid email address")]
+        [RegularExpression("(^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$)",
+        ErrorMessage = "Please enter correct email address")]
         public string email { get; set; }
 
 
