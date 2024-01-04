@@ -1,0 +1,282 @@
+﻿@model IEnumerable<ContactModels.Contacts>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+ 
+<table id="contacts_tables" class="table table-bordered">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhonePrimary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneSecondary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StreetAdd1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StreetAdd2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+          <tr >
+             
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhonePrimary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneSecondary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAdd1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAdd2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State.Abbrevation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                <a class="btn btn-outline-primary btn-sm button-default-sm-width" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-outline-secondary btn-sm button-default-sm-width" href="#" data-bs-toggle="modal" data-bs-target="#ContactDetailsModels"
+                 data-bs-friendlyName="@item.FriendlyName" data-bs-firstName="@item.FirstName" data-bs-lastName="@item.LastName" data-bs-email="@item.email" data-bs-mob1="@item.PhonePrimary" data-bs-mob2="@item.PhoneSecondary"
+                 data-bs-birthday="@item.Birthday" data-bs-add1="@item.StreetAdd1" data-bs-add2="@item.StreetAdd2" data-bs-city="@item.city" data-bs-zip="@item.Zip" data-bs-state="@item.State.Abbrevation" data-bs-userId="@item.userId">Details</a>|
+                <form asp-action="Delete" asp-route-id="@item.Id" method ="post">
+                    <button type="submit" class="btn btn-danger btn-sm button-default-sm-width" onclick="return confirm('Are you sure want to delete @item.FriendlyName?');">
+                      Delete
+                    </button>
+               </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ 
+
+ <div class="modal fade" id="ContactDetailsModels" tabindex="-1" aria-labelledby="ContactDetailsModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ContactDetailsModelLabel">Employee Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        First Name
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-first-name"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Last Name
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-last-name"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Email Id
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-email"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Mob No 1
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-phone-primary"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Mob No 2
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-phone-secondary"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        DOB
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-birthday"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Address 1
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-street-add1"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Address 2
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-street-add2"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        City
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-city"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        Pin Code
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-zip"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        State
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-state"></span>
+                    </dd>
+
+                    <dt class="col-sm-4">
+                        User Id
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="modal-user-id"></span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+
+        $("#contacts_tables").DataTable();
+          
+                var ContactDetailsModels = document.getElementById('ContactDetailsModels')
+
+                 ContactDetailsModels.addEventListener('show.bs.modal', function (event) {
+
+
+            // this are all for only details
+            var button = event.relatedTarget;
+            var Tital = button.getAttribute('data-bs-friendlyName');
+            var FirstName = button.getAttribute('data-bs-firstName');
+            var LastName = button.getAttribute('data-bs-lastName');
+            var Email = button.getAttribute('data-bs-email');
+            var Mob1 = button.getAttribute('data-bs-mob1');
+            var Mob2 = button.getAttribute('data-bs-mob2');
+            var Dob = button.getAttribute('data-bs-birthday');
+            var Add1 = button.getAttribute('data-bs-add1');
+            var Add2 = button.getAttribute('data-bs-add2');
+            var City = button.getAttribute('data-bs-city');
+            var Zip = button.getAttribute('data-bs-zip');
+            var State = button.getAttribute('data-bs-state');
+            var UserId = button.getAttribute('data-bs-userId');
+
+            window.alert(Tital);
+
+ 
+            var modalFirstName = ContactDetailsModels.querySelector('.modal-first-name');
+            modalFirstName.textContent = FirstName;
+
+            var modalLastName = ContactDetailsModels.querySelector('.modal-last-name');
+            modalLastName.textContent = LastName;
+
+            var modalEmail = ContactDetailsModels.querySelector('.modal-email');
+            modalEmail.textContent = Email;
+
+            var modalMob1 = ContactDetailsModels.querySelector('.modal-phone-primary');
+            modalMob1.textContent = Mob1;
+
+            var modalMob2 = ContactDetailsModels.querySelector('.modal-phone-secondary');
+            modalMob2.textContent = Mob2;
+
+            var modalDob = ContactDetailsModels.querySelector('.modal-birthday');
+            modalDob.textContent = Dob;
+
+            var modalAdd1 = ContactDetailsModels.querySelector('.modal-street-add1');
+            modalAdd1.textContent = Add1;
+
+            var modalAdd2 = ContactDetailsModels.querySelector('.modal-street-add2');
+            modalAdd2.textContent = Add2;
+
+            var modalCity = ContactDetailsModels.querySelector('.modal-city');
+            modalCity.textContent = City;
+
+            var modalZip = ContactDetailsModels.querySelector('.modal-zip');
+            modalZip.textContent = Zip;
+
+            var modalState = ContactDetailsModels.querySelector('.modal-state');
+            modalState.textContent = State;
+
+            var modalUserId = ContactDetailsModels.querySelector('.modal-user-id');
+            modalUserId.textContent = UserId;
+        })
+    </script>
+
+    
+}

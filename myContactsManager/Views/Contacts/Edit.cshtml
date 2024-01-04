@@ -1,0 +1,138 @@
+﻿@model ContactModels.Contacts
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:cornflowerblue;">Edit Contacts</h1>
+
+<hr />
+<form asp-action="Create">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"><b>First Name</b></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"><b>Last Name</b></label>
+                        <input asp-for="LastName" class="form-control"/>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="email" class="control-label"><b>Email ID</b></label>
+                        <input asp-for="email" class="form-control"/>
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="PhonePrimary" class="control-label"><b>Phone 1</b></label>
+                        <input asp-for="PhonePrimary" class="form-control"/>
+                        <span asp-validation-for="PhonePrimary" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="PhoneSecondary" class="control-label"><b>Phone 2</b></label>
+                        <input asp-for="PhoneSecondary" class="form-control"/>
+                        <span asp-validation-for="PhoneSecondary" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Birthday" class="control-label"><b>DOB</b></label>
+                        <input asp-for="Birthday" class="form-control"/>
+                        <span asp-validation-for="Birthday" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="StreetAdd1" class="control-label"><b>Street Add 1</b></label>
+                        <input asp-for="StreetAdd1" class="form-control"/>
+                        <span asp-validation-for="StreetAdd1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="StreetAdd2" class="control-label"><b>Street Add 2</b></label>
+                        <input asp-for="StreetAdd2" class="form-control"/>
+                        <span asp-validation-for="StreetAdd2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="city" class="control-label"><b>City</b></label>
+                        <input asp-for="city" class="form-control"/>
+                        <span asp-validation-for="city" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="StateId" class="control-label"><b>State Id</b></label>
+                        <select asp-for="StateId" class="form-control" asp-items="ViewBag.StateId"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="userId" class="control-label"><b>User Id</b></label>
+                        <input asp-for="userId" class="form-control"/>
+                        <span asp-validation-for="userId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Zip" class="control-label"><b>Pin Code</b></label>
+                        <input asp-for="Zip" class="form-control"/>
+                        <span asp-validation-for="Zip" class="text-danger"></span>
+                    </div>
+                </div><br>
+            </div><br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <a asp-action="Index"><b>Back to List</b></a>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group float-end">
+                <input type="submit" value="Save " class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts 
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
